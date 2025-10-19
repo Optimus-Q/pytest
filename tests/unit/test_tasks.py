@@ -73,3 +73,27 @@ def test_multipara(taskid):
 
     with pytest.raises(TypeError):
         get_id(task_id = taskid)
+
+
+@pytest.fixture()
+def some_data():
+    return 42
+
+def test_somedata(some_data):
+    val_ = some_data
+    assert val_ == 42
+
+def test_addvalue(add_value):
+    av_ = {"summary":"pytesting", "owner":"roy", "id":1}
+    assert av_ == add_value
+
+def test_valuelist(add_list):
+    total_len = len(add_list)
+    expected = [{"summary":"pytesting", "owner":"roy", "id":1},
+                {"summary":"pytng", "oer":"ry", "id":10}]
+    assert len(expected) == total_len
+
+def test_getidname(get_id_name):
+    expected = "roy"
+    val_ = get_id_name["name"]
+    assert val_ == expected
